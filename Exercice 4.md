@@ -14,7 +14,7 @@ void main()
     buffer[3] = 'D';
     ptr = buffer + 2;
     *ptr = 'Z';
-    printf("sc sc sc \c \n", buffer[0], buffer[1], buffer[2], buffer[3]);
+    printf("%c %c %c %c \n", buffer[0], buffer[1], buffer[2], buffer[3]);
 }
 ```
 
@@ -23,10 +23,9 @@ void main()
 - `ptr = buffer + 2` sets `ptr` to point to `buffer[2]` (address of the third element, holding 'C').
 - `*ptr = 'Z'` overwrites `buffer[2]` with 'Z'.
 - After modification, `buffer` is: `['A', 'B', 'Z', 'D', ...]`.
-- The `printf` statement has a format string: `"sc sc sc \c \n"`, but `\c` is not a valid escape sequence in standard C, and the format specifiers are missing (should be `%c %c %c %c \n`).
-- Assuming a typo and the intended format is `%c %c %c %c \n`, the program prints: `buffer[0], buffer[1], buffer[2], buffer[3]`.
+- According to the fromatting "%c %c %c %c \n" he program prints: `buffer[0] buffer[1] buffer[2] buffer[3] \n`.
 
-**Output** (assuming corrected format `%c %c %c %c \n`):
+**Output:**
 ```
 A B Z D
 ```
@@ -35,5 +34,3 @@ A B Z D
 - The assignments set `buffer[0..3]` to `'A', 'B', 'C', 'D'`.
 - `ptr` modifies `buffer[2]` to `'Z'`.
 - `printf` outputs the first four elements of `buffer` as characters.
-
-If the format string is not corrected, the program may produce undefined behavior due to mismatched arguments and format specifiers. However, based on the context, the intended output is likely as above.
